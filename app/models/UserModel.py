@@ -16,7 +16,8 @@ class UserModel(db.Model):
     modified_at = db.Column(db.DateTime)
 
     def __init__(self, data):
-        self.name = data.get('name')
+        self.first_name = data.get('first_name')
+        self.last_name = data.get('last_name')
         self.email = data.get('email')
         self.password = self.__generate_hash(data.get('password')) 
         self.created_at = datetime.datetime.utcnow()
@@ -37,6 +38,10 @@ class UserModel(db.Model):
     def delete(self):
         db.session.delete(self)
         db.session.commit()
+
+    @staticmethod
+    def get_user_by_email(value):
+        return UserModel.query.filter_by(email=value).first()
 
     @staticmethod
     def get_all_users():
