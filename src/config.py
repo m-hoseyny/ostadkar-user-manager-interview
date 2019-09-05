@@ -1,4 +1,8 @@
 import os
+import environ
+
+env = environ.Env()
+environ.Env.read_env('.env')
 
 class Development(object):
     """
@@ -7,6 +11,7 @@ class Development(object):
     DEBUG = True
     TESTING = False
     JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY')
+    SQLALCHEMY_TRACK_MODIFICATIONS=False
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
 
 class Production(object):
@@ -15,6 +20,7 @@ class Production(object):
     """
     DEBUG = False
     TESTING = False
+    SQLALCHEMY_TRACK_MODIFICATIONS=False
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
     JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY')
 
