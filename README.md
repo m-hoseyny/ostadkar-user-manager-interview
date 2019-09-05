@@ -45,4 +45,4 @@ Now you can run your app with this command:
 ----
 ## Author
 * Mohammad Hosseini - mohammad.hoseyny@gmail.com
-
+* V1.0.0
