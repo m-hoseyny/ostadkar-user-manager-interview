@@ -1,7 +1,7 @@
 
 import os
 
-from src.app import create_app
+from app.app import create_app
 import environ
 
 env = environ.Env()

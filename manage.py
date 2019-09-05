@@ -2,8 +2,8 @@
 import os
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
-from src.app import create_app, db
-from src.models.UserModel import UserModel
+from app.app import create_app, db
+from app.models.UserModel import UserModel
 import environ
 
 env = environ.Env()
