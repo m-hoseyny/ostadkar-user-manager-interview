@@ -42,7 +42,112 @@ Now you can run your app with this command:
 
     python run.py
 
+
+## API 
+This is a CRUD for users. This is token based authentication. You must put your token in header with *api-token*.
+
+### Create
+    URL: /api/v1/users
+    METHOD: POST
+    JSON Request Data:
+        {
+            "email": "USER_EMAIL",
+            "first_name": "USER_FIRST_NAME",
+            "last_name": "USER_LAST_NAME",
+            "password": "USER_PASSWORD"
+        }
+    Response Data:
+        {"jwt_token": "USER_JWT_TOKEN"}
+
+### Lgin
+    URL: /api/v1/users/login
+    METHOD: POST
+    JSON Request Data:
+        {
+            "email": "USER_EMAIL",
+            "password": "USER_PASSWORD"
+        }
+    Response:
+        200 : {"jwt_token": "USER_JWT_TOKEN"}
+        400: { "error": "user doesn't exist" }
+             {'error': 'you need email and password to sign in'}
+             {'error': 'invalid credentials'}
+
+### Get All users
+    URL: /api/v1/users
+    Authentication Requierd
+    METHOD: GET
+    JSON Request Data:
+        None
+    Header:
+        {'api-token': 'USER_JWT_TOKEN'}
+    Response:
+        200 : [{
+                    "created_at": "2019-09-05T13:07:29.529430",
+                    "email": "EMAIL",
+                    "first_name": "FIRSTNAME",
+                    "id": ID,
+                    "last_name": "LASTNAME",
+                    "modified_at": "2019-09-05T13:07:29.529446",
+                    "password": "HASHED_PASSWORD"
+                },
+             ... ]
+
+### Get a user
+    URL: /api/v1/users/<user_id: int>
+    Authentication Requierd
+    METHOD: GET
+    JSON Request Data:
+        {None
+    Header:
+        {'api-token': 'USER_JWT_TOKEN'}
+    Response:
+        200 : {
+                    "created_at": "2019-09-05T13:07:29.529430",
+                    "email": "EMAIL",
+                    "first_name": "FIRSTNAME",
+                    "id": ID,
+                    "last_name": "LASTNAME",
+                    "modified_at": "2019-09-05T13:07:29.529446",
+                    "password": "HASHED_PASSWORD"
+              }
+        400: {'error': 'user not found'}
+
+### Delete a user
+    URL: /api/v1/users/<user_id: int>
+    Authentication Requierd
+    METHOD: DELETE
+    JSON Request Data:
+        None
+    Header:
+        {'api-token': 'USER_JWT_TOKEN'}
+    Response:
+        200 : { "status": "ok" } 
+        400 : { "error": "user doesn't exist" }
+              {'error': "you cant delete yourself"}
+
+### Update a user
+    URL: /api/v1/users/<user_id: int>
+    Authentication Requierd
+    METHOD: PUT
+    JSON Request Data:
+        {
+            "email": "USER_EMAIL",
+            "first_name": "USER_FIRST_NAME",
+            "last_name": "USER_LAST_NAME",
+            "password": "USER_PASSWORD"
+        }
+    Header:
+        {'api-token': 'USER_JWT_TOKEN'}
+    Response:
+        200 : { "status": "ok" } 
+        400 : { "error": "user doesn't exist" }
+              {'error': "this email exist, you cant update this user's email"}
+
+
+* The API token has an 1 day expiration date. It can be changed in Authentication/Authentication.py line 14.
+
 ----
 ## Author
 * Mohammad Hosseini - mohammad.hoseyny@gmail.com
-* V1.0.0
+* V1.0.1
