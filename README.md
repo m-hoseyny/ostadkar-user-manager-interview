@@ -12,6 +12,12 @@ For installing python3.x use this [link](https://linuxize.com/post/how-to-instal
 
 For installing Postgres database use this [link](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-18-04)
 
+Befor isntalling the requirements, we need some extra package for psycopg:
+
+    sudo apt-get install postgresql
+    sudo apt-get install python-psycopg2
+    sudo apt-get install libpq-dev
+
 After installing Python and Postgres, you must install project requirements. 
 
     pip -r requirements.txt
