@@ -20,7 +20,7 @@ Befor isntalling the requirements, we need some extra package for psycopg:
 
 After installing Python and Postgres, you must install project requirements. 
 
-    pip -r requirements.txt
+    pip install -r requirements.txt
 
 ----
 ## Configs
@@ -39,7 +39,7 @@ There is *production* and *development* types for FLASK_ENV. In production the D
 
 ----
 ## Migrate
-Change your directory to root of the project and migrate tables:
+Change your directory to root of the project and migrate the tables:
 
     python manage.py db upgrade
 
@@ -151,7 +151,7 @@ This is a CRUD for users. This is token based authentication. You must put your 
               {'error': "this email exist, you cant update this user's email"}
 
 
-* The API token has an 1 day expiration date. It can be changed in Authentication/Authentication.py line 14.
+* The expiration data of the token is 1 day. It can be changed in Authentication/Authentication.py line 14.
 
 ----
 ## Author
