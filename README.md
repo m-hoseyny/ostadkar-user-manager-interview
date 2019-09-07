@@ -14,7 +14,7 @@ For installing Postgres database use this [link](https://www.digitalocean.com/co
 
 After installing Python and Postgres, you must install project requirements. 
 
-    pip -r requirements.txt
+    pip install -r requirements.txt
 
 ----
 ## Configs
@@ -33,7 +33,7 @@ There is *production* and *development* types for FLASK_ENV. In production the D
 
 ----
 ## Migrate
-Change your directory to root of the project and migrate tables:
+Change your directory to root of the project and migrate the tables:
 
     python manage.py db upgrade
 
