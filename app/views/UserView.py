@@ -46,9 +46,12 @@ def update(user_id):
     req_data = request.get_json()
     data = user_schema.load(req_data, partial=True)
     user = UserModel.get_one_user(user_id)
-    dup_user = UserModel.get_user_by_email(data['email']) 
-    if dup_user.id != user_id:
-      return custom_response({'error': "this email exist, you cant update this user's email"}, 400)
+    if not user:
+      return custom_response({'error': "user doesn't exist"}, 400)
+    if 'email' in data.keys():
+      dup_user = UserModel.get_user_by_email(data['email']) 
+      if dup_user.id != user_id:
+        return custom_response({'error': "this email exist, you cant update this user's email"}, 400)
     user.update(data)
     ser_user = user_schema.dump(user)
     return custom_response(ser_user, 200)
