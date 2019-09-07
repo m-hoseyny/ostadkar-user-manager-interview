@@ -145,7 +145,7 @@ This is a CRUD for users. This is token based authentication. You must put your 
               {'error': "this email exist, you cant update this user's email"}
 
 
-* The API token has an 1 day expiration date. It can be changed in Authentication/Authentication.py line 14.
+* The expiration data of the token is 1 day. It can be changed in Authentication/Authentication.py line 14.
 
 ----
 ## Author
